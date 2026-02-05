@@ -18,13 +18,11 @@ class MyApp extends StatelessWidget {
 
 class _TabsNonScrollableDemo extends StatefulWidget {
   @override
-  __TabsNonScrollableDemoState createState() =>
-      __TabsNonScrollableDemoState();
+  __TabsNonScrollableDemoState createState() => __TabsNonScrollableDemoState();
 }
 
 class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     with SingleTickerProviderStateMixin, RestorationMixin {
-
   late TabController _tabController;
 
   final RestorableInt tabIndex = RestorableInt(0);
@@ -79,7 +77,6 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   @override
   Widget build(BuildContext context) {
-
     final tabs = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'];
 
     return Scaffold(
@@ -94,7 +91,6 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
           ],
         ),
       ),
-
       bottomNavigationBar: const BottomAppBar(
         child: Padding(
           padding: EdgeInsets.all(12),
@@ -104,11 +100,9 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
           ),
         ),
       ),
-
       body: TabBarView(
         controller: _tabController,
         children: [
-
           // TAB 1
           Container(
             color: Colors.blueAccent.withOpacity(0.12),
@@ -160,7 +154,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // ✅ TAB 3 (NEW — Button + Snackbar)
+          // TAB 3
           Container(
             color: Colors.orangeAccent.withOpacity(0.12),
             child: Center(
@@ -177,10 +171,46 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // TAB 4 placeholder
+          // ✅ TAB 4 (NEW — ListView + Cards)
           Container(
             color: Colors.purpleAccent.withOpacity(0.12),
-            child: const Center(child: Text('Tab 4 (placeholder)')),
+            child: ListView(
+              padding: const EdgeInsets.all(12),
+              children: const [
+                Card(
+                  elevation: 4,
+                  child: ListTile(
+                    title: Text('Item 1'),
+                    subtitle: Text('Details for Item 1'),
+                    leading: Icon(Icons.list),
+                  ),
+                ),
+                Card(
+                  elevation: 4,
+                  child: ListTile(
+                    title: Text('Item 2'),
+                    subtitle: Text('Details for Item 2'),
+                    leading: Icon(Icons.list),
+                  ),
+                ),
+                Card(
+                  elevation: 4,
+                  child: ListTile(
+                    title: Text('Item 3'),
+                    subtitle: Text('Details for Item 3'),
+                    leading: Icon(Icons.list),
+                  ),
+                ),
+                Card(
+                  elevation: 4,
+                  child: ListTile(
+                    title: Text('Item 4'),
+                    subtitle: Text('Details for Item 4'),
+                    leading: Icon(Icons.list),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
