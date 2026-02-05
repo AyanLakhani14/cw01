@@ -109,7 +109,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
         controller: _tabController,
         children: [
 
-          // ✅ TAB 1 (your existing one)
+          // TAB 1
           Container(
             color: Colors.blueAccent.withOpacity(0.12),
             child: Center(
@@ -130,7 +130,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // ✅ TAB 2 (NEW — Image + Text Inputs)
+          // TAB 2
           Container(
             color: Colors.greenAccent.withOpacity(0.12),
             padding: const EdgeInsets.all(20),
@@ -160,10 +160,21 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // TAB 3 placeholder
+          // ✅ TAB 3 (NEW — Button + Snackbar)
           Container(
             color: Colors.orangeAccent.withOpacity(0.12),
-            child: const Center(child: Text('Tab 3 (placeholder)')),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Button pressed in Tab 3!'),
+                    ),
+                  );
+                },
+                child: const Text('Click Me'),
+              ),
+            ),
           ),
 
           // TAB 4 placeholder
