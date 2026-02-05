@@ -18,11 +18,13 @@ class MyApp extends StatelessWidget {
 
 class _TabsNonScrollableDemo extends StatefulWidget {
   @override
-  __TabsNonScrollableDemoState createState() => __TabsNonScrollableDemoState();
+  __TabsNonScrollableDemoState createState() =>
+      __TabsNonScrollableDemoState();
 }
 
 class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     with SingleTickerProviderStateMixin, RestorationMixin {
+
   late TabController _tabController;
 
   final RestorableInt tabIndex = RestorableInt(0);
@@ -77,6 +79,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   @override
   Widget build(BuildContext context) {
+
     final tabs = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'];
 
     return Scaffold(
@@ -86,7 +89,9 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
         bottom: TabBar(
           controller: _tabController,
           isScrollable: false,
-          tabs: [for (final tab in tabs) Tab(text: tab)],
+          tabs: [
+            for (final tab in tabs) Tab(text: tab),
+          ],
         ),
       ),
 
@@ -103,7 +108,8 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // TAB 1: ✅ Text + Alert Dialog
+
+          // ✅ TAB 1 (your existing one)
           Container(
             color: Colors.blueAccent.withOpacity(0.12),
             child: Center(
@@ -124,10 +130,34 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // TAB 2 placeholder
+          // ✅ TAB 2 (NEW — Image + Text Inputs)
           Container(
             color: Colors.greenAccent.withOpacity(0.12),
-            child: const Center(child: Text('Tab 2 (placeholder)')),
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  'https://picsum.photos/150',
+                  width: 150,
+                  height: 150,
+                ),
+                const SizedBox(height: 18),
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Enter Name',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Enter Email',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
           ),
 
           // TAB 3 placeholder
